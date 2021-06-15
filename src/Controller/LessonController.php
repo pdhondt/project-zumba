@@ -18,8 +18,24 @@ class LessonController extends AbstractController
         $form = $this->createForm(LessonFormType::class, $lesson);
         $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($lesson);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('lesson_overview');
+        }
+
         return $this->render('lesson/create.html.twig', [
             'lessonForm' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/lesson_overview', name: 'lesson_overview')]
+    public function lessonOverview(): Response
+    {
+        return $this->render('lesson/overview.html.twig', [
+
         ]);
     }
 }
