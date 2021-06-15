@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Lesson{% endblock %}
+
+{% block body %}
+
+    <h1>Create Lesson</h1>
+
+        {{ form_start(lessonForm) }}
+            {{ form_row(lessonForm.date) }}
+            {{ form_row(lessonForm.start_time) }}
+            {{ form_row(lessonForm.end_time) }}
+
+            <button type="submit" class="btn">Create Lesson</button>
+        {{ form_end(lessonForm) }}
+
+
+{% endblock %}

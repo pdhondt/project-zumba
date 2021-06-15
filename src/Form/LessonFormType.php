@@ -15,7 +15,7 @@ class LessonFormType extends AbstractType
             ->add('date')
             ->add('start_time')
             ->add('end_time')
-            ->add('participants')
+            // ->add('participants')
         ;
     }
 
