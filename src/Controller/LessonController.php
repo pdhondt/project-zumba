@@ -34,8 +34,11 @@ class LessonController extends AbstractController
     #[Route('/lesson_overview', name: 'lesson_overview')]
     public function lessonOverview(): Response
     {
-        return $this->render('lesson/overview.html.twig', [
+        $repository = $this->getDoctrine()->getRepository(Lesson::class);
+        $lessons = $repository->findAll();
 
+        return $this->render('lesson/overview.html.twig', [
+            'lessons' => $lessons,
         ]);
     }
 }
